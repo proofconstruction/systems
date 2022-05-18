@@ -1,0 +1,3 @@
+#+title: My NixOS systems
+
+These use flakes now. It's nice.
