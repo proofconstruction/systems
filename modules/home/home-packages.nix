@@ -18,6 +18,9 @@
 
     # chat
     element-desktop
+    discord
+    signal-desktop
+    zoom-us
 
     # graphics
     gimp
