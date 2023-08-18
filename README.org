@@ -1,0 +1,3 @@
+#+title: My Nix-powered Systems
+
+This repo contains configs for the machines I use.
