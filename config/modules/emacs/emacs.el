@@ -43,8 +43,8 @@
 ;; Nice to have
 (if (string= (system-name) "carbon")
        (display-battery-mode t))
-(display-time-mode t)
-
+(display-time)
+(setq display-time-default-load-average 'nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; THEME
