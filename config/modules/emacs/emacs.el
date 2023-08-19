@@ -65,22 +65,21 @@
 ;; FONTS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun mine/font-exists-p (font)
+(defun font-exists-p (font)
   "Check if the font exists."
   (and (display-graphic-p) (not (null (x-list-fonts font)))))
 
-(setq mine/font-size 150)
-(defun mine/set-my-fonts ()
+(defun set-preferred-fonts (font-size)
   (cond
-   ((mine/font-exists-p "Source Code Pro")
-    (set-face-attribute 'fixed-pitch nil :family "Source Code Pro Regular" :height mine/font-size)
-    (set-face-attribute 'default nil :family "Source Code Pro Regular" :height mine/font-size)))
+   ((font-exists-p "Source Code Pro")
+    (set-face-attribute 'fixed-pitch nil :family "Source Code Pro" :height font-size)
+    (set-face-attribute 'default nil :family "Source Code Pro" :height font-size)))
 
   (cond
-   ((mine/font-exists-p "Ubuntu")
-    (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height mine/font-size))))
+   ((font-exists-p "Ubuntu")
+    (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height font-size))))
 
-(mine/set-my-fonts)
+(set-preferred-fonts 150)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
