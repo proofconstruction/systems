@@ -24,10 +24,13 @@
       };
     };
 
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
-      xmobar
-      arandr
-      gtk3
-    ];
+    home-manager.users.${config.mine.user.name}.home = {
+      file.".xmonad/xmonad.hs".source = ./xmonad.hs;
+      packages = with pkgs; [
+        xmobar
+        arandr
+        gtk3
+      ];
+    };
   };
 }
