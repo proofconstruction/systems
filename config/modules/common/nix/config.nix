@@ -17,7 +17,7 @@
         settings = {
           trusted-users = [
             "@admin"
-            "alex"
+            config.mine.user.name
           ];
 
           # optimise each build

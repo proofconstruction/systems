@@ -15,7 +15,7 @@
 
       displayManager.autoLogin = {
         enable = true;
-        user = "alex";
+        user = config.mine.user.name;
       };
 
       windowManager.xmonad = {
