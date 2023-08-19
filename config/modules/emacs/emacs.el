@@ -41,7 +41,7 @@
   initial-major-mode 'fundamental-mode)
 
 ;; Nice to have
-(if (= (system-name) "carbon")
+(if (string= (system-name) "carbon")
        (display-battery-mode t))
 (display-time-mode t)
 
