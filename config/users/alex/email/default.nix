@@ -7,7 +7,7 @@
 let
   mailAccounts = config.private.email;
 
-  mkAccounts = name: cfg: {
+  mkAccount = name: cfg: {
     primary = if name == "primary" then true else false;
     flavor = cfg.flavor;
     realName = cfg.fullName;
@@ -34,12 +34,15 @@ in
       mbsync = {
         enable = true;
         postExec = "${pkgs.mu}/bin/mu index";
+        frequency = "*:0/5"; # sync every 5 minutes
       };
     };
 
     accounts.email = {
       maildirBasePath = "mail";
-      accounts = lib.mapAttrs mkAccounts mailAccounts;
+      accounts = lib.mapAttrs mkAccount mailAccounts;
     };
   };
+
+  imports = [ ./mu4e.nix ];
 }

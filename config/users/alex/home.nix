@@ -20,5 +20,5 @@
     };
   };
 
-  imports = [ ./email.nix ];
+  imports = [ ./email ];
 }
