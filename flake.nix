@@ -53,9 +53,7 @@
         nix-index-database.nixosModules.nix-index
         systems-private.nixosModules.private
         ./config/hosts/${name}
-        ./config/modules
-        ./config/roles
-        ./config/users
+        ./config
       ];
 
       # turn an attrset from nixosSystems into a nixosConfiguration
