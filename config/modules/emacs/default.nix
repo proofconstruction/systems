@@ -9,13 +9,11 @@
     enable = mkEnableOption "emacs";
     package = mkOption {
       type = types.package;
-      default = myEmacs;
       example = pkgs.emacs-nox;
       description = "Which Emacs to enable.";
     };
     configText = mkOption {
       type = types.str;
-      default = emacsConfig;
       description = ".emacs source";
     };
     configExtra = mkOption {
