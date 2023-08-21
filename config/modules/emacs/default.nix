@@ -38,9 +38,10 @@
         package = config.mine.emacs.package;
       };
 
-      home.file.".emacs".text = lib.concatLines ([
-        config.mine.emacs.configText
-      ] ++ config.mine.emacs.configExtra);
+      home.file.".emacs".text = lib.concatLines (
+        [ config.mine.emacs.configText ]
+        ++ config.mine.emacs.configExtra
+      );
     };
   };
 }
