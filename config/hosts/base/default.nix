@@ -21,8 +21,9 @@
     };
 
     roles = {
-      workstation = true;
+      binary-cache = true;
       database-host = true;
+      workstation = true;
     };
   };
 
