@@ -23,6 +23,7 @@
     roles = {
       binary-cache = true;
       database-host = true;
+      vm-host = true;
       workstation = true;
     };
   };

@@ -7,6 +7,7 @@
     ./laptop.nix
     ./router.nix
     ./server.nix
+    ./vm-host.nix
     ./workstation.nix
   ];
 }
