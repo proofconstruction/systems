@@ -16,7 +16,6 @@
         "--header"
       ];
       git = true;
-      icons = true;
     };
   };
 }
