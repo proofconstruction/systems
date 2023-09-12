@@ -25,6 +25,7 @@
       fonts.enable = true;
       gnupg.enable = true;
       kitty.enable = true;
+      mob.enable = true;
       obs-studio.enable = true;
       password-store.enable = true;
       podman.enable = true;
