@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ...
 }:
 
@@ -22,5 +23,10 @@
     services.xserver = {
       videoDrivers = [ "nvidia" ];
     };
+
+    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+      xorg.xhost
+      gwe
+    ];
   };
 }
