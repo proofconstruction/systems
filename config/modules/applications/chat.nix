@@ -14,6 +14,8 @@
       fluffychat
       element-desktop
       slack
+      teams
+      zoom-us
     ];
   };
 }
