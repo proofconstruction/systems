@@ -5,10 +5,10 @@
 }:
 
 {
-  options.mine.exa.enable = lib.mkEnableOption "exa";
+  options.mine.eza.enable = lib.mkEnableOption "eza";
 
-  config = lib.mkIf config.mine.exa.enable {
-    home-manager.users.${config.mine.user.name}.programs.exa = {
+  config = lib.mkIf config.mine.eza.enable {
+    home-manager.users.${config.mine.user.name}.programs.eza = {
       enable = true;
       enableAliases = true;
       extraOptions = [

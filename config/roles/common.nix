@@ -6,7 +6,7 @@
 {
   config.mine = {
     bottom.enable = true;
-    exa.enable = true;
+    eza.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     tmux.enable = true;
