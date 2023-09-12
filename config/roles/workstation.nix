@@ -33,6 +33,7 @@
       rofi.enable = true;
       rtorrent.enable = true;
       texlive.enable = true;
+      vlc.enable = true;
       xmonad.enable = true;
       zathura.enable = true;
     };
