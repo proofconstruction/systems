@@ -21,6 +21,7 @@
       direnv.enable = true;
       emacs.enable = true;
       firefox.enable = true;
+      flameshot.enable = true;
       fonts.enable = true;
       gnupg.enable = true;
       kitty.enable = true;
