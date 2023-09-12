@@ -36,6 +36,7 @@
       rtorrent.enable = true;
       texlive.enable = true;
       vlc.enable = true;
+      whisper.enable = true;
       xmonad.enable = true;
       zathura.enable = true;
     };
