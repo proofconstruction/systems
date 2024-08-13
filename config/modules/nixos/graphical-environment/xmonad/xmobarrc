@@ -1,0 +1,28 @@
+Config
+   { font =         "Roboto Bold 16,WenQuanYi Zen Hei Bold 16"
+   , dpi = 128
+   , bgColor =      "#292e39" -- slightly darker than nord0/polar night
+   , position =     TopH 24
+   , template = "%StdinReader%}{<fc=#5e81ac>%date%</fc> | %battery%"
+   , allDesktops =      False    -- show on all desktops
+   , commands =
+        [ Run Battery        [ "--template" , "<acstatus>"
+                             , "--Low"      , "10"        -- units: %
+                             , "--High"     , "80"        -- units: %
+                             , "--low"      , "#bf616a"
+                             , "--normal"   , "#ebcb8b"
+                             , "--high"     , "#a3be8c"
+
+                             , "--" -- battery specific options
+                                       -- discharging status
+                                       , "-o"	, "[<left>]"
+                                       -- AC "on" status
+                                       , "-O"	, "<fc=#ebcb8b>[<left>+]</fc>"
+                                       -- charged status
+                                       , "-i"	, "<fc=#a3be8c>[100]</fc>"
+                             ] 50
+
+        , Run Date "%a %b %_d %H:%M" "date" 10
+        , Run StdinReader
+        ]
+   }
