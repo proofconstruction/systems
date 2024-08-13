@@ -8,6 +8,10 @@
   config = lib.mkIf config.roles.git-server {
     mine = {
       gitDaemon.enable = true;
+      forgejo.enable = true;
+      # make sure we can fetch SSL certs
+      acme.enable = true;
+
     };
   };
 }
