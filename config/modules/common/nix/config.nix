@@ -6,7 +6,7 @@
   config = lib.mkMerge [
     {
       nix = {
-        package = pkgs.nixUnstable;
+        package = pkgs.nixVersions.git;
 
         extraOptions = ''
           experimental-features = nix-command flakes
