@@ -25,6 +25,7 @@
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
+        roboto
         wqy_microhei
         wqy_zenhei
       ];

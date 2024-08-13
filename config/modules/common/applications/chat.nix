@@ -8,14 +8,12 @@
 
   config = lib.mkIf config.mine.chat.enable {
     home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
-      jitsi-meet-electron
+      # jitsi-meet-electron
       signal-desktop
-      discord
-      fluffychat
-      element-desktop
-      slack
-      teams
-      zoom-us
+      #discord
+      #element-desktop
+      #slack
+      #zoom-us
     ];
   };
 }

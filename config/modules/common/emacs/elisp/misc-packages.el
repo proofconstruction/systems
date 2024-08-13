@@ -1,3 +1,4 @@
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -14,6 +15,8 @@
     	undo-tree-visualizer-timestamps t
 	undo-tree-auto-save-history nil)
   (global-undo-tree-mode))
+
+(use-package ztree)
 
 (use-package tramp)
 
@@ -35,7 +38,10 @@
 
 (use-package which-key
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (add-hook 'c-mode-hook 'lsp)
+  (add-hook 'c++-mode-hook 'lsp)
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
 (use-package recentf
   :config

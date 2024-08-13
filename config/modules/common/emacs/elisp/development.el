@@ -2,6 +2,21 @@
 ;; DEVELOPMENT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; (use-package agda-mode
+;;   :config
+;;   (load-file "/nix/store/wizc1zzc0108bwga3hwg9c01pcvgy3yh-Agda-2.6.4.3-data/share/ghc-9.6.5/x86_64-linux-ghc-9.6.5/Agda-2.6.4.3/emacs-mode/agda2.el"))
+
+(use-package htmlize)
+
+(use-package magit-delta
+  :after magit
+  :config
+  (setq
+    ;; magit-delta-default-dark-theme "nord"
+    ;; magit-delta-default-light-theme "Github"
+    magit-delta-hide-plus-minus-markers nil)
+  (magit-delta-mode))
+
 (use-package lsp-ui
   :commands lsp-ui-mode
   :config
@@ -88,6 +103,12 @@
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
+(use-package lsp-nix
+  :after (lsp-mode)
+  :demand t
+  :custom
+  (lsp-nix-nil-formatter ["nixpkgs-fmt"]))
+
 (use-package lsp-haskell
   :after haskell-mode lsp-mode)
 
@@ -114,7 +135,9 @@
 
 (use-package json-mode)
 
-(use-package nix-mode)
+(use-package nix-mode
+  :hook (nix-mode . lsp-deferred))
+
 (use-package nixpkgs-fmt
   :init
   (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode))

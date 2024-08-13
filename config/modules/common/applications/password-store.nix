@@ -15,7 +15,7 @@ in
         enable = true;
         package = pkgs.pass.withExtensions (exts: with exts; [ pass-otp pass-update pass-audit ]);
         settings = {
-          PASSWORD_STORE_DIR = "/home/${cfg.name}/.password-store";
+          PASSWORD_STORE_DIR = if pkgs.stdenv.isLinux then "/home/${cfg.name}/.password-store" else "/Users/${cfg.name}/.password-store";
           PASSWORD_STORE_CLIP_TIME = "60";
         };
       };

@@ -10,7 +10,7 @@
   config = lib.mkIf config.mine.eza.enable {
     home-manager.users.${config.mine.user.name}.programs.eza = {
       enable = true;
-      enableAliases = true;
+      enableBashIntegration = true;
       extraOptions = [
         "--group-directories-first"
         "--header"

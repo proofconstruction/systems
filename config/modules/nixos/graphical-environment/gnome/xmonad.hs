@@ -207,7 +207,6 @@ myManageHook = composeOne
   , isDialog <&&> className =? ".blueman-applet-wrapped"  -?> doFloatAt 0.4 0 -- bluetooth connections
   , isDialog                                              -?> doCenterFloat
   , isDialog <&&> className =? "Firefox"                  -?> doCenterFloat
-  , title    =? "emacs-anywhere"                          -?> doCenterFloat
   , isInProperty
       "_NET_WM_WINDOW_TYPE"
       "_NET_WM_WINDOW_TYPE_SPLASH"
@@ -233,7 +232,6 @@ myKeybindings =
 
   -- Applications
   , ("M-S-e"         , spawn Main.emacs)
-  , ("M-S-m"         , spawn Main.emacsAnywhere)
   , ("M-S-f"         , spawn browser)
   , ("M-S-<Return>"  , spawn shell)
 
@@ -263,9 +261,6 @@ inputMethod = "fcitx"
 
 emacs :: String
 emacs = "emacsclient -nc"
-
-emacsAnywhere :: String
-emacsAnywhere = "emacsclient -a '' -c -F '(quote (name . \"emacs-anywhere\"))' -e '(emacs-anywhere)'"
 
 browser :: String
 browser = "firefox"

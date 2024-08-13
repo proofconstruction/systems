@@ -26,7 +26,7 @@ in
     home-manager.users.${config.mine.user.name}.programs = {
       zsh = {
         enable = true;
-        enableAutosuggestions = true;
+        autosuggestion.enable = true;
         enableCompletion = true;
         autocd = true;
         defaultKeymap = "emacs";

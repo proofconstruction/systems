@@ -1,9 +1,13 @@
 # Stolen from https://github.com/infinisil/system/blob/master/config/new-modules/default.nix; thanks Silvan!
 
-{ lib
+{ config
+, lib
 , ...
 }:
 
+# {
+#   imports = config.mine.lib.validFiles ./.;
+# }
 with lib;
 let
   # Recursively constructs an attrset of a given directory

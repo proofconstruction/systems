@@ -9,9 +9,8 @@
 
   config = lib.mkIf config.mine.nvidia.enable {
     hardware = {
-      opengl = {
+      graphics = {
         enable = true;
-        driSupport = true;
       };
 
       nvidia = {

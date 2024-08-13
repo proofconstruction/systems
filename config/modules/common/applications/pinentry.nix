@@ -18,7 +18,7 @@ in
   options.mine.pinentry.enable = lib.mkEnableOption "pinentry";
 
   config = lib.mkIf config.mine.pinentry.enable {
-    home-manager.users.${config.mine.user.name} = {
+    home-manager.users.${config.mine.user.name} = lib.mkIf (config.mine.exwm.enable or config.mine.rofi.enable) {
       services.gpg-agent = lib.mkMerge [
         (lib.mkIf config.mine.exwm.enable {
           extraConfig = ''
@@ -44,5 +44,9 @@ in
         (lib.mkIf (!config.mine.rofi.enable && !config.mine.exwm.enable) [ pkgs.pinentry-gtk2 ])
       ];
     };
+
+    # home-manager.users.${config.mine.user.name}.home.file.".gnupg/gpg-agent.conf".text = lib.mkIf pkgs.stdenv.isDarwin ''
+    #   pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
+    # '';
   };
 }

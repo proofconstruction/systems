@@ -8,7 +8,6 @@
   options.mine.audio.enable = lib.mkEnableOption "audio stuff";
 
   config = lib.mkIf config.mine.audio.enable {
-    sound.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -16,6 +15,7 @@
       pulse.enable = true;
       jack.enable = true;
     };
+    hardware.pulseaudio.enable = false;
 
     home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
       pavucontrol

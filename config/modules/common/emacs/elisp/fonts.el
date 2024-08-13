@@ -16,4 +16,4 @@
    ((font-exists-p "Ubuntu")
     (set-face-attribute 'variable-pitch nil :family "Ubuntu" :height font-size))))
 
-(set-preferred-fonts 150)
+(set-preferred-fonts 180)

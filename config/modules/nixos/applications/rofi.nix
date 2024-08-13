@@ -24,7 +24,7 @@ in
       rofi = {
         enable = true;
         cycle = true;
-        font = "xft:Fira Sans Mono:antialias=true 12";
+        font = "xft:Roboto:antialias=true 16";
         inherit terminal;
         inherit plugins;
         location = "center";

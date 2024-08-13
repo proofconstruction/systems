@@ -17,4 +17,4 @@
 (package-initialize)
 
 ;; enable emacs-anywhere
-(load "~/.emacs.d/emacs-anywhere.el")
+;;(load "~/.emacs.d/emacs-anywhere.el")

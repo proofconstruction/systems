@@ -16,7 +16,7 @@
     })
 
     (lib.mkIf config.mine.nvidia.enable {
-      virtualisation.podman.enableNvidia = true;
+      hardware.nvidia-container-toolkit.enable = true;
     })
   ];
 }

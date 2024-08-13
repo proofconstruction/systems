@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 let
   emacsVersion = pkgs.emacs-git;
@@ -9,6 +13,7 @@ let
   ];
 
   melpaUnstablePkgs = epkgs: with epkgs.melpaPackages; [
+    # agda-mode
     company
     counsel
     diminish
@@ -16,8 +21,10 @@ let
     dockerfile-mode
     expand-region
     f
+    github-theme
     go-mode
     haskell-mode
+    htmlize
     ivy
     ivy-pass
     json-mode
@@ -25,6 +32,7 @@ let
     lsp-haskell
     lsp-mode
     lsp-ui
+    magit-delta
     markdown-mode
     minimal-theme
     mood-line
@@ -46,9 +54,11 @@ let
     use-package
     visual-fill-column
     vterm
+    wgrep
     which-key
     whitespace-cleanup-mode
     yaml-mode
+    ztree
   ];
 
   elpaPkgs = epkgs: with epkgs.elpaPackages; [
@@ -61,7 +71,11 @@ let
     xclip
   ];
 
-  pkgSetFns = [ melpaStablePkgs melpaUnstablePkgs elpaPkgs ];
+  ePkgs = epkgs: with epkgs; [
+    mu4e
+  ];
+
+  pkgSetFns = [ melpaStablePkgs melpaUnstablePkgs elpaPkgs ePkgs ];
 
   # given epkgs and a function `epkgs: with epkgs.<pkgSet>; [ <pkgNames> ];`,
   # apply the function to epkgs
@@ -72,7 +86,20 @@ let
   mkWithPkgs = pkgsArg: pkgSetFns: lib.lists.concatMap (applyPkgSetFn pkgsArg) pkgSetFns;
 
   withPkgs = epkgs: mkWithPkgs epkgs pkgSetFns;
+
+  languageServers = with pkgs; [
+    nil # nix language server
+    pyright # python language server
+  ];
+
+  systemPackages = with pkgs; [
+    delta
+  ];
+
 in
 {
-  mine.emacs.package = emacsWithPackages withPkgs;
+  config = {
+    mine.emacs.package = emacsWithPackages withPkgs;
+    home-manager.users.${config.mine.user.name}.home.packages = languageServers ++ systemPackages;
+  };
 }
