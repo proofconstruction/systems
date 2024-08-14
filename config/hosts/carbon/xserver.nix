@@ -5,10 +5,12 @@
 
 {
   config = {
-    services.xserver = {
-      videoDrivers = [ "intel" ];
-      dpi = 210;
-      xkbOptions = "ctrl:nocaps";
+    services = {
+      xserver = {
+        videoDrivers = [ "intel" ];
+        dpi = 210;
+        xkb.options = "ctrl:nocaps";
+      };
 
       libinput = {
         enable = true;
