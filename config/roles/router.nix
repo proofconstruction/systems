@@ -14,9 +14,9 @@ let
     quad9 = [ "9.9.9.9" ];
   };
 
-  internalPrefix = "";
+  internalPrefix = "10.10.10";
   gateway = "10.0.0.1";
-  wanMask = 24;
+  wanMask = 32;
   lanMask = 24;
   hostSuffix = 1;
   routerAddr = internalPrefix + "." + (toString hostSuffix);
