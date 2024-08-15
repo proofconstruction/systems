@@ -1,6 +1,4 @@
 { config
-, lib
-, pkgs
 , ...
 }:
 
@@ -11,6 +9,8 @@
         enable = true;
         manufacturer = "intel";
       };
+
+      redistributableFirmware = true;
 
       nix.caches.nix-community.enable = true;
     };
