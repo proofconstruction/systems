@@ -1,44 +1,46 @@
 { config
-, pkgs
 , lib
 , ...
 }:
 
-{
-  options.roles.workstation = lib.mkEnableOption "workstation stuff";
-
-  config = lib.mkIf config.roles.workstation {
-    environment.systemPackages = with pkgs; [
-      feh
-    ];
-
-    mine = {
-      android-tools.enable = true;
-      audio.enable = true;
-      bluetooth.enable = true;
-      chat.enable = true;
-      cpuMicrocode.enable = true;
-      direnv.enable = true;
-      emacs.enable = true;
-      firefox.enable = true;
-      flameshot.enable = true;
-      fonts.enable = true;
-      gnupg.enable = true;
-      kitty.enable = true;
-      mob.enable = true;
-      obs-studio.enable = true;
-      password-store.enable = true;
-      podman.enable = true;
-      printing.enable = true;
-      redistributableFirmware.enable = true;
-      redshift.enable = true;
-      rofi.enable = true;
-      rtorrent.enable = true;
-      texlive.enable = true;
-      vlc.enable = true;
-      whisper.enable = true;
-      xmonad.enable = true;
-      zathura.enable = true;
-    };
+let
+  commonModules = {
+    chat.enable = true;
+    direnv.enable = true;
+    emacs.enable = true;
+    fonts.enable = true;
+    gnupg.enable = true;
+    mob.enable = true;
+    password-store.enable = true;
+    podman.enable = true;
+    rtorrent.enable = true;
+    texlive.enable = true;
   };
+in
+{
+  options.roles.workstation.nixos = lib.mkEnableOption "NixOS workstation stuff";
+  options.roles.workstation.macos = lib.mkEnableOption "macOS workstation stuff";
+
+  config = lib.mkMerge [
+    (lib.mkIf config.roles.workstation.nixos {
+      mine = {
+        audio.enable = true;
+        bluetooth.enable = true;
+        cpuMicrocode.enable = true;
+        firefox.enable = true;
+        flameshot.enable = true;
+        redistributableFirmware.enable = true;
+        redshift.enable = true;
+        rofi.enable = true;
+        terminator.enable = true;
+        vlc.enable = true;
+        xmonad.enable = true;
+        zathura.enable = true;
+      } // commonModules;
+    })
+
+    (lib.mkIf config.roles.workstation.macos {
+      mine = commonModules;
+    })
+  ];
 }

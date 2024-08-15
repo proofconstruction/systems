@@ -17,7 +17,7 @@
     };
 
     roles = {
-      workstation = true;
+      workstation.nixos = true;
       laptop = true;
     };
   };
