@@ -1,5 +1,4 @@
 { config
-, lib
 , ...
 }:
 
@@ -21,9 +20,13 @@
     };
 
     roles = {
+      ai-host = true;
       binary-cache = true;
       database-host = true;
+      dns-server = true;
+      download-server = true;
       git-server = true;
+      media-server = true;
       vm-host = true;
     };
   };
