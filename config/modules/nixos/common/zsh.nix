@@ -40,6 +40,10 @@ in
           plugins = [ "pass" "sudo" ];
           theme = theme;
         };
+        initExtra = ''
+          # fix emacs tramp hanging when the remote host has zsh
+          [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+        '';
       };
     };
   };
