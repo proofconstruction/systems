@@ -1,16 +1,18 @@
 { config
-, lib
 , pkgs
 , ...
 }:
 
+let
+  cfgp = config.private.users.alex;
+in
 {
-  config.home-manager.users.${config.custom.user.name}.programs = {
+  config.home-manager.users.${cfgp.username}.programs = {
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
-      userName = config.private.personal.fullName;
-      userEmail = config.private.personal.gitEmail;
+      userName = cfgp.username;
+      userEmail = cfgp.gitEmail;
     };
   };
 }

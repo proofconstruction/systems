@@ -4,7 +4,7 @@
 }:
 
 let
-  cfg = config.personal.homeDomain;
+  cfg = config.private.homelab.domain;
   notBase = config.networking.hostName != "base";
 in
 {
@@ -18,12 +18,11 @@ in
     };
   };
 
-
   config = lib.mkIf (config.custom.nix.caches.home.enable && notBase) {
     nix.settings = {
       substituters = [ "http://cache.${cfg}" ];
       trusted-public-keys = [
-        "cache.${cfg}:kEdj9tgHGxd4fcBWlxmpdD9M8JvyCGGb97pJa34Xiac="
+        "cache.${cfg}-1:8cnHkT/HcpoWO0SHM00EVhONd+zkXZbMDcCsEAZrioU="
       ];
     };
   };

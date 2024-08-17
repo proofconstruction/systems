@@ -3,5 +3,5 @@
 }:
 
 {
-  time.timeZone = config.private.personal.timeZone;
+  time.timeZone = config.private.users.alex.timeZone;
 }
