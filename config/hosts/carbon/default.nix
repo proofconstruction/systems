@@ -14,6 +14,7 @@
         enable = true;
         manufacturer = "intel";
       };
+      xmonad.enable = true;
     };
 
     roles = {

@@ -34,7 +34,6 @@ in
         rofi.enable = true;
         terminator.enable = true;
         vlc.enable = true;
-        xmonad.enable = true;
         zathura.enable = true;
       } // commonModules;
     })
