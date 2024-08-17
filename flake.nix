@@ -60,29 +60,67 @@
     , systems-private
     } @ inputs:
     let
-      mkNixosModules = name: [
+      emacsOverlay = { nixpkgs.overlays = [ emacs-overlay.overlay ]; };
+
+      mkCommonModules = name: [
+        ./config/hosts/${name}
+        ./config/modules/common
+        ./config/users
+        ./config/roles
         {
           networking.hostName = name;
-          system.stateVersion = "23.11";
-          programs.command-not-found.enable = false;
-          nixpkgs.overlays = [ emacs-overlay.overlay ];
-          home-manager.users.alex.home.file.".emacs.d/emacs-anywhere.el".source = "${emacs-anywhere.outPath}/emacs-anywhere.el";
+          system.stateVersion = "24.05";
+          programs.command-not-found.enable = false; # use nix-index-database
         }
+      ];
+
+      nixosModules = [
         home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index
         systems-private.nixosModules.private
-        ./config/hosts/${name}
-        ./config
+        ./config/modules/nixos
       ];
 
-      # turn an attrset from nixosSystems into a nixosConfiguration
-      mkNixosSystem = name: cfg: nixpkgs.lib.nixosSystem {
+      darwinModules = [
+        home-manager.darwinModules.home-manager
+        nix-index-database.darwinModules.nix-index
+        systems-private.nixosModules.private
+        ./config/modules/darwin
+      ];
+
+      # check if attrset should become a nixosConfiguration
+      isNixosSystem = system: system == "x86_64-linux";
+
+      # generate the list of modules to inject into the configuration
+      mkModules = name: cfg:
+        (mkCommonModules name)
+        ++ (if isNixosSystem cfg.system
+        then nixosModules
+        else darwinModules)
+        ++ (cfg.modules or [ ]);
+
+      mkSystem = name: cfg: {
         system = cfg.system;
-        modules = (mkNixosModules name) ++ (cfg.modules or [ ]);
-        specialArgs = inputs;
+        modules = mkModules name cfg;
+        specialArgs = {
+          inherit inputs;
+        };
       };
 
-      # definitions for the systems I use
+      # turn a named attrset into nixosSystems or darwinSystems
+      mkConfiguration = name: cfg:
+        if isNixosSystem cfg.system
+        then nixpkgs.lib.nixosSystem (mkSystem name cfg)
+        else darwin.lib.darwinSystem (mkSystem name cfg);
+
+      mkConfigurations = systems: nixpkgs.lib.mapAttrs mkConfiguration systems;
+      darwinSystems = {
+        imac = {
+          system = "aarch64-darwin";
+          modules = [ emacsOverlay ];
+        };
+      };
+
       nixosSystems = {
         base = {
           system = "x86_64-linux";
@@ -93,6 +131,7 @@
           system = "x86_64-linux";
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
+            emacsOverlay
           ];
         };
 
@@ -111,8 +150,8 @@
       };
     in
     {
-      nixosConfigurations = nixpkgs.lib.mapAttrs mkNixosSystem nixosSystems;
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      darwinConfigurations = mkConfigurations darwinSystems;
+      nixosConfigurations = mkConfigurations nixosSystems;
     };
 }
 
