@@ -1,45 +1,64 @@
 {
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    nixpkgs = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixpkgs";
+      ref = "nixpkgs-unstable";
+    };
 
-    nixos.url = github:nixos/nixpkgs/nixos-unstable;
+    nixos-hardware = {
+      type = "github";
+      owner = "nixos";
+      repo = "nixos-hardware";
+      ref = "master";
+    };
 
-    nixos-hardware.url = github:nixos/nixos-hardware/master;
+    darwin = {
+      type = "github";
+      owner = "lnl7";
+      repo = "nix-darwin";
+      ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-index-database = {
-      url = github:Mic92/nix-index-database;
+      type = "github";
+      owner = "Mic92";
+      repo = "nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = github:nix-community/home-manager;
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     emacs-overlay = {
-      url = github:nix-community/emacs-overlay;
+      type = "github";
+      owner = "nix-community";
+      repo = "emacs-overlay";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    emacs-anywhere = {
-      url = gitlab:slotThe/emacs-anywhere;
-      flake = false;
-    };
+    systems-private.url = path:///home/alex/systems-private;
 
-    systems-private.url = git+ssh://git@github.com/proofconstruction/systems-private;
   };
 
   outputs =
-    inputs @ { self
+    { self
     , nixpkgs
-    , nixos
     , nixos-hardware
+    , darwin
     , nix-index-database
     , home-manager
     , emacs-overlay
-    , emacs-anywhere
     , systems-private
-    }:
+    } @ inputs:
     let
       mkNixosModules = name: [
         {
