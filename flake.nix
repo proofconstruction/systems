@@ -79,16 +79,14 @@
 
         mini = {
           system = "x86_64-linux";
-          modules = [
-            { mine.user.shell = nixpkgs.legacyPackages.x86_64-linux.bash; }
-          ];
+          modules = [{ custom.user.shell = nixpkgs.legacyPackages.x86_64-linux.bash; }];
         };
 
         pi = {
           system = "aarch64-linux";
           modules = [
             nixos-hardware.nixosModules.raspberry-pi-4
-            { mine.user.shell = nixpkgs.legacyPackages.aarch64-linux.bash; }
+            { custom.user.shell = nixpkgs.legacyPackages.aarch64-linux.bash; }
           ];
         };
       };

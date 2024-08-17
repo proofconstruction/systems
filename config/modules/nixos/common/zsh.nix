@@ -23,7 +23,7 @@ in
     };
     environment.pathsToLink = [ "/share/zsh" ];
 
-    home-manager.users.${config.mine.user.name}.programs = {
+    home-manager.users.${config.custom.user.name}.programs = {
       zsh = {
         enable = true;
         autosuggestion.enable = true;

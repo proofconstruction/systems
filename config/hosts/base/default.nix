@@ -5,7 +5,7 @@
 
 {
   config = {
-    mine = {
+    custom = {
       nix.caches = {
         haskell.enable = true;
         cuda.enable = true;

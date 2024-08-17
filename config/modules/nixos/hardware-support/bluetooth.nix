@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.bluetooth.enable = lib.mkEnableOption "bluetooth";
+  options.custom.bluetooth.enable = lib.mkEnableOption "bluetooth";
 
-  config = lib.mkIf config.mine.bluetooth.enable {
+  config = lib.mkIf config.custom.bluetooth.enable {
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
   };

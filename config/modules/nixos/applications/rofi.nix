@@ -16,11 +16,11 @@ let
   ];
 in
 {
-  options.mine.rofi.enable = lib.mkEnableOption "rofi";
+  options.custom.rofi.enable = lib.mkEnableOption "rofi";
 
-  config = lib.mkIf config.mine.rofi.enable {
-    mine.pinentry.enable = true;
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.rofi.enable {
+    custom.pinentry.enable = true;
+    home-manager.users.${config.custom.user.name}.programs = {
       rofi = {
         enable = true;
         cycle = true;

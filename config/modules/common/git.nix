@@ -5,7 +5,7 @@
 }:
 
 {
-  config.home-manager.users.${config.mine.user.name}.programs = {
+  config.home-manager.users.${config.custom.user.name}.programs = {
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;

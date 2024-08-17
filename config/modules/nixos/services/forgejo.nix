@@ -7,9 +7,9 @@ let
   fqdn = "git.${config.networking.domain}";
 in
 {
-  options.mine.forgejo.enable = lib.mkEnableOption "forgejo";
+  options.custom.forgejo.enable = lib.mkEnableOption "forgejo";
 
-  config = lib.mkIf config.mine.forgejo.enable {
+  config = lib.mkIf config.custom.forgejo.enable {
     services = {
       forgejo = {
         enable = true;

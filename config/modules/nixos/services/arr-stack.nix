@@ -12,9 +12,9 @@ let
   prowlarr_port = 9696;
 in
 {
-  options.mine.arr-stack.enable = lib.mkEnableOption "the -arr stack";
+  options.custom.arr-stack.enable = lib.mkEnableOption "the -arr stack";
 
-  config = lib.mkIf config.mine.arr-stack.enable {
+  config = lib.mkIf config.custom.arr-stack.enable {
     services = {
       sonarr.enable = true;
       radarr.enable = true;

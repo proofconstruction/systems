@@ -31,7 +31,7 @@ in
   options.roles.router = lib.mkEnableOption "stuff for my home router";
 
   config = lib.mkIf config.roles.router {
-    mine.redistributableFirmware.enable = true;
+    custom.redistributableFirmware.enable = true;
 
     boot.kernel.sysctl = {
       "net.ipv4.conf.all.forwarding" = true;

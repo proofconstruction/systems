@@ -4,9 +4,9 @@
 }:
 
 {
-  options.mine.flameshot.enable = lib.mkEnableOption "screenshots with flameshot";
+  options.custom.flameshot.enable = lib.mkEnableOption "screenshots with flameshot";
 
-  config = lib.mkIf config.mine.flameshot.enable {
-    home-manager.users.${config.mine.user.name}.services.flameshot.enable = true;
+  config = lib.mkIf config.custom.flameshot.enable {
+    home-manager.users.${config.custom.user.name}.services.flameshot.enable = true;
   };
 }

@@ -9,15 +9,15 @@ let
   exwmConfig = builtins.readFile ./exwm.el;
 in
 {
-  options.mine.exwm.enable = lib.mkEnableOption "exwm";
+  options.custom.exwm.enable = lib.mkEnableOption "exwm";
 
-  config = lib.mkIf config.mine.exwm.enable {
-    mine.emacs = {
+  config = lib.mkIf config.custom.exwm.enable {
+    custom.emacs = {
       enable = true;
       configExtra = exwmConfig;
     };
 
-    mine.pinentry.enable = true;
+    custom.pinentry.enable = true;
 
     services.xserver = {
       enable = true;
@@ -26,13 +26,13 @@ in
 
       displayManager.autoLogin = {
         enable = true;
-        user = config.mine.user.name;
+        user = config.custom.user.name;
       };
 
       windowManager.session = lib.singleton {
         name = "exwm";
         start = ''
-          ${config.mine.emacs.package}/bin/emacs -l ${loadScript}
+          ${config.custom.emacs.package}/bin/emacs -l ${loadScript}
         '';
       };
 

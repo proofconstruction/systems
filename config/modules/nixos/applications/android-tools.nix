@@ -4,9 +4,9 @@
 , ...
 }:
 {
-  options.mine.android-tools.enable = lib.mkEnableOption "adb";
+  options.custom.android-tools.enable = lib.mkEnableOption "adb";
 
-  config = lib.mkIf config.mine.android-tools.enable {
+  config = lib.mkIf config.custom.android-tools.enable {
 
     # allow using android device camera as webcam
     boot = {
@@ -21,7 +21,7 @@
       '';
     };
 
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       android-tools
       (scrcpy.override { ffmpeg = ffmpeg_6.override { withV4l2 = true; }; })
     ];

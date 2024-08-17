@@ -5,14 +5,15 @@
 }:
 
 {
-  options.mine.transmission.enable = lib.mkEnableOption "transmission";
+  options.custom.transmission.enable = lib.mkEnableOption "transmission";
 
-  config = lib.mkIf config.mine.transmission.enable {
+  config = lib.mkIf config.custom.transmission.enable {
     services = {
       transmission = {
         enable = true;
         package = pkgs.transmission_4;
         webHome = pkgs.flood-for-transmission;
+        openRPCPort = true;
         settings = {
           rpc-port = 9091;
           rpc-bind-address = "127.0.0.1";

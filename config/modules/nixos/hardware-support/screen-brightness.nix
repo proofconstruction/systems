@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.screen-brightness.enable = lib.mkEnableOption "screen-brightness";
+  options.custom.screen-brightness.enable = lib.mkEnableOption "screen-brightness";
 
-  config = lib.mkIf config.mine.screen-brightness.enable {
+  config = lib.mkIf config.custom.screen-brightness.enable {
     programs.light.enable = true;
 
     services.actkbd = {

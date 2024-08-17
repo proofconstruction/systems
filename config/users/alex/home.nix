@@ -7,7 +7,7 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users.${config.mine.user.name} = {
+      users.${config.custom.user.name} = {
         home = {
           stateVersion = config.system.stateVersion;
           sessionVariables = {

@@ -3,13 +3,13 @@
 , ...
 }:
 {
-  options.mine.redshift.enable = lib.mkEnableOption "redshift";
+  options.custom.redshift.enable = lib.mkEnableOption "redshift";
 
-  config = lib.mkIf config.mine.redshift.enable {
+  config = lib.mkIf config.custom.redshift.enable {
 
     services.geoclue2.enable = true;
 
-    home-manager.users.${config.mine.user.name}.services.redshift = {
+    home-manager.users.${config.custom.user.name}.services.redshift = {
       enable = true;
       provider = "geoclue2";
       settings.redshift = {

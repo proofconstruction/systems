@@ -5,7 +5,7 @@
 }:
 
 {
-  options.mine.emacs = with lib; {
+  options.custom.emacs = with lib; {
     enable = mkEnableOption "emacs";
     package = mkOption {
       type = types.package;
@@ -23,24 +23,24 @@
     };
   };
 
-  config = lib.mkIf config.mine.emacs.enable {
+  config = lib.mkIf config.custom.emacs.enable {
     environment.pathsToLink = [ "/share/emacs" ];
     services.emacs = {
       enable = true;
-      package = config.mine.emacs.package;
+      package = config.custom.emacs.package;
       defaultEditor = true;
       install = true;
     };
 
-    home-manager.users.${config.mine.user.name} = {
+    home-manager.users.${config.custom.user.name} = {
       programs.emacs = {
         enable = true;
-        package = config.mine.emacs.package;
+        package = config.custom.emacs.package;
       };
 
       home.file.".emacs".text = lib.concatLines (
-        [ config.mine.emacs.configText ]
-        ++ config.mine.emacs.configExtra
+        [ config.custom.emacs.configText ]
+        ++ config.custom.emacs.configExtra
       );
     };
   };

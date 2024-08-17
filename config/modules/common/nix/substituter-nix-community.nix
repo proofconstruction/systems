@@ -2,7 +2,7 @@
 , lib
 , ...
 }: {
-  options.mine.nix.caches = with lib; {
+  options.custom.nix.caches = with lib; {
     nix-community.enable = mkOption {
       type = types.bool;
       default = false;
@@ -13,7 +13,7 @@
   };
 
 
-  config = lib.mkIf config.mine.nix.caches.nix-community.enable {
+  config = lib.mkIf config.custom.nix.caches.nix-community.enable {
     nix.settings = {
       substituters = [ "https://nix-community.cachix.org" ];
       trusted-public-keys = [

@@ -8,7 +8,7 @@
   config = {
     powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
-    mine = {
+    custom = {
       nix.caches.nix-community.enable = true;
       cpuMicrocode = {
         enable = true;

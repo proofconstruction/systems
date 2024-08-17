@@ -20,5 +20,5 @@ let
   elispConfig = lib.concatLines (map builtins.readFile elispFiles);
 in
 {
-  config.mine.emacs.configText = elispConfig;
+  config.custom.emacs.configText = elispConfig;
 }

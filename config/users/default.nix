@@ -8,7 +8,7 @@ let
   cfgp = config.private;
 in
 {
-  options.mine.user = with lib; {
+  options.custom.user = with lib; {
     enable = mkOption {
       type = types.bool;
       default = true;
@@ -22,7 +22,7 @@ in
 
     fullName = mkOption {
       type = types.str;
-      default = cfgp.personal.fullName;
+      default = cfgp.users.alex.fullName;
     };
 
     shell = mkOption {
@@ -34,11 +34,11 @@ in
     sshPublicKey = mkOption {
       type = types.str;
       description = "This user's SSH public key.";
-      default = cfgp.personal.sshPublicKey;
+      default = cfgp.users.alex.sshPublicKey;
     };
   };
 
   imports = [
-    ./alex/default.nix
+    ./alex
   ];
 }

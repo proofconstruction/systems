@@ -4,10 +4,10 @@
 }:
 
 {
-  options.mine.direnv.enable = lib.mkEnableOption "direnv";
+  options.custom.direnv.enable = lib.mkEnableOption "direnv";
 
-  config = lib.mkIf config.mine.direnv.enable {
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.direnv.enable {
+    home-manager.users.${config.custom.user.name}.programs = {
       direnv = {
         enable = true;
         enableZshIntegration = true;

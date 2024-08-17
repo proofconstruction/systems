@@ -10,9 +10,9 @@ let
   gitPort = 9418;
 in
 {
-  options.mine.gitDaemon.enable = lib.mkEnableOption "gitDaemon";
+  options.custom.gitDaemon.enable = lib.mkEnableOption "gitDaemon";
 
-  config = lib.mkIf config.mine.gitDaemon.enable {
+  config = lib.mkIf config.custom.gitDaemon.enable {
     services = {
       gitDaemon = {
         enable = true;
@@ -30,7 +30,7 @@ in
       createHome = true;
       home = gitRoot;
       shell = "${pkgs.gitFull}/bin/git-shell";
-      openssh.authorizedKeys.keys = [ config.mine.user.sshPublicKey ];
+      openssh.authorizedKeys.keys = [ config.custom.user.sshPublicKey ];
     };
 
     # make sure we can git clone with ssh

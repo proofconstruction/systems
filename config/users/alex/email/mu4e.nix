@@ -67,7 +67,7 @@ let
 
 in
 {
-  config.mine.emacs.configExtra = [
+  config.custom.emacs.configExtra = [
     mailSectionHeader
     loadMu4e
     mu4eBaseConfig

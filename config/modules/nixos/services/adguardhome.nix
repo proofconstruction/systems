@@ -9,9 +9,9 @@ let
   cfgp = config.private.homelab.acme;
 in
 {
-  options.mine.adguardhome.enable = lib.mkEnableOption "adguardhome";
+  options.custom.adguardhome.enable = lib.mkEnableOption "adguardhome";
 
-  config = lib.mkIf config.mine.adguardhome.enable {
+  config = lib.mkIf config.custom.adguardhome.enable {
     services = {
       adguardhome = {
         enable = true;

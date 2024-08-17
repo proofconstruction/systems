@@ -4,12 +4,12 @@
 , ...
 }:
 let
-  cfg = config.mine.user;
+  cfg = config.custom.user;
 in
 {
-  options.mine.password-store.enable = lib.mkEnableOption "pass";
+  options.custom.password-store.enable = lib.mkEnableOption "pass";
 
-  config = lib.mkIf config.mine.password-store.enable {
+  config = lib.mkIf config.custom.password-store.enable {
     home-manager.users.${cfg.name}.programs = {
       password-store = {
         enable = true;

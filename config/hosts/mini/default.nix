@@ -4,7 +4,7 @@
 
 {
   config = {
-    mine = {
+    custom = {
       cpuMicrocode = {
         enable = true;
         manufacturer = "intel";

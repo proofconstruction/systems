@@ -22,7 +22,7 @@
       git-server = true;
     };
 
-    mine.nix.caches.nix-community.enable = true;
+    custom.nix.caches.nix-community.enable = true;
   };
 
   imports = [

@@ -26,15 +26,15 @@ let
   modelsComposed = map mkModels models;
 in
 {
-  options.mine.ollama.enable = lib.mkEnableOption "Meta's Ollama model";
+  options.custom.ollama.enable = lib.mkEnableOption "Meta's Ollama model";
 
-  config = lib.mkIf config.mine.ollama.enable {
+  config = lib.mkIf config.custom.ollama.enable {
     services = {
       ollama = {
         enable = true;
-        package = if config.mine.nvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
+        package = if config.custom.nvidia.enable then pkgs.ollama-cuda else pkgs.ollama;
         loadModels = modelsComposed;
-        acceleration = if config.mine.nvidia.enable then "cuda" else false;
+        acceleration = if config.custom.nvidia.enable then "cuda" else false;
         host = "0.0.0.0";
       };
 

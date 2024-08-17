@@ -24,7 +24,7 @@ let
   };
 in
 {
-  config.home-manager.users.${config.mine.user.name} = {
+  config.home-manager.users.${config.custom.user.name} = {
     programs = {
       mbsync.enable = true;
       msmtp.enable = true;

@@ -4,10 +4,10 @@
 , ...
 }:
 {
-  options.mine.development.ccxx.enable = lib.mkEnableOption "C/C++ devtools";
+  options.custom.development.ccxx.enable = lib.mkEnableOption "C/C++ devtools";
 
-  config = lib.mkIf config.mine.development.ccxx.enable {
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+  config = lib.mkIf config.custom.development.ccxx.enable {
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       clangd
     ];
   };

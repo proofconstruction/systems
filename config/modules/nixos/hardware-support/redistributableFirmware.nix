@@ -4,9 +4,9 @@
 }:
 
 {
-  options.mine.redistributableFirmware.enable = lib.mkEnableOption "closed firmware blobs";
+  options.custom.redistributableFirmware.enable = lib.mkEnableOption "closed firmware blobs";
 
-  config = lib.mkIf config.mine.redistributableFirmware.enable {
+  config = lib.mkIf config.custom.redistributableFirmware.enable {
     hardware.enableRedistributableFirmware = true;
   };
 }

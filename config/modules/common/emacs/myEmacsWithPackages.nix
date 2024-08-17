@@ -99,7 +99,7 @@ let
 in
 {
   config = {
-    mine.emacs.package = emacsWithPackages withPkgs;
-    home-manager.users.${config.mine.user.name}.home.packages = languageServers ++ systemPackages;
+    custom.emacs.package = emacsWithPackages withPkgs;
+    home-manager.users.${config.custom.user.name}.home.packages = languageServers ++ systemPackages;
   };
 }

@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.gnome.enable = lib.mkEnableOption "gnome";
+  options.custom.gnome.enable = lib.mkEnableOption "gnome";
 
-  config = lib.mkIf config.mine.gnome.enable {
+  config = lib.mkIf config.custom.gnome.enable {
     services = {
       xserver = {
         enable = true;

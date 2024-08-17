@@ -4,10 +4,10 @@
 , ...
 }:
 {
-  options.mine.chat.enable = lib.mkEnableOption "chat services";
+  options.custom.chat.enable = lib.mkEnableOption "chat services";
 
-  config = lib.mkIf config.mine.chat.enable {
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+  config = lib.mkIf config.custom.chat.enable {
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       # jitsi-meet-electron
       signal-desktop
       #discord

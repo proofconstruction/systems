@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.printing.enable = lib.mkEnableOption "printers";
+  options.custom.printing.enable = lib.mkEnableOption "printers";
 
-  config = lib.mkIf config.mine.printing.enable {
+  config = lib.mkIf config.custom.printing.enable {
     services = {
       printing.enable = true;
       avahi.enable = true;

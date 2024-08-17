@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.fonts.enable = lib.mkEnableOption "preferred fonts";
+  options.custom.fonts.enable = lib.mkEnableOption "preferred fonts";
 
-  config = lib.mkIf config.mine.fonts.enable {
+  config = lib.mkIf config.custom.fonts.enable {
     fonts = {
       fontDir.enable = true;
       fontconfig.enable = true;

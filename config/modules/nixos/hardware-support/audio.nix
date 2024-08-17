@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.audio.enable = lib.mkEnableOption "audio stuff";
+  options.custom.audio.enable = lib.mkEnableOption "audio stuff";
 
-  config = lib.mkIf config.mine.audio.enable {
+  config = lib.mkIf config.custom.audio.enable {
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -17,7 +17,7 @@
     };
     hardware.pulseaudio.enable = false;
 
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       pavucontrol
       helvum
     ];

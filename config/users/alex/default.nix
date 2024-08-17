@@ -5,7 +5,7 @@
 , ...
 }:
 let
-  cfg = config.mine.user;
+  cfg = config.custom.user;
 in
 {
   config = lib.mkIf cfg.enable {

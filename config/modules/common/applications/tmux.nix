@@ -5,16 +5,16 @@
 }:
 
 let
-  defaultShell = "${config.mine.user.shell.out}";
+  defaultShell = "${config.custom.user.shell.out}";
   defaultCommand = lib.lists.last (lib.strings.splitString "/" defaultShell);
   setDefaultShell = "set -g default-shell ${defaultShell}";
   setDefaultCommand = "set -g default-command ${defaultCommand}";
 in
 {
-  options.mine.tmux.enable = lib.mkEnableOption "tmux";
+  options.custom.tmux.enable = lib.mkEnableOption "tmux";
 
-  config = lib.mkIf config.mine.tmux.enable {
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.tmux.enable {
+    home-manager.users.${config.custom.user.name}.programs = {
       tmux = {
         enable = true;
         clock24 = true;

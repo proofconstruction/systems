@@ -4,9 +4,9 @@
 , ...
 }:
 {
-  options.mine.vlc.enable = lib.mkEnableOption "VLC Media Player";
+  options.custom.vlc.enable = lib.mkEnableOption "VLC Media Player";
 
-  config = lib.mkIf config.mine.vlc.enable {
-    home-manager.users.${config.mine.user.name}.home.packages = [ pkgs.vlc ];
+  config = lib.mkIf config.custom.vlc.enable {
+    home-manager.users.${config.custom.user.name}.home.packages = [ pkgs.vlc ];
   };
 }

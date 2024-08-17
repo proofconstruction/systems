@@ -2,7 +2,7 @@
 , lib
 , ...
 }: {
-  options.mine.nix.caches = with lib; {
+  options.custom.nix.caches = with lib; {
     haskell.enable = mkOption {
       type = types.bool;
       default = false;
@@ -12,7 +12,7 @@
     };
   };
 
-  config = lib.mkIf config.mine.nix.caches.haskell.enable {
+  config = lib.mkIf config.custom.nix.caches.haskell.enable {
     nix.settings = {
       substituters = [ "https://cache.iog.io" ];
       trusted-public-keys = [

@@ -4,11 +4,11 @@
 , ...
 }:
 {
-  options.mine.kvm.enable = lib.mkEnableOption "the kernel virtual machine";
+  options.custom.kvm.enable = lib.mkEnableOption "the kernel virtual machine";
 
-  config = lib.mkIf config.mine.kvm.enable {
+  config = lib.mkIf config.custom.kvm.enable {
     virtualisation.libvirtd.enable = true;
-    users.extraUsers.${config.mine.user.name}.extraGroups = [ "libvirtd" ];
+    users.extraUsers.${config.custom.user.name}.extraGroups = [ "libvirtd" ];
 
     boot.extraModprobeConfig = ''
       options kvm_intel nested=1

@@ -23,7 +23,7 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf config.roles.workstation.nixos {
-      mine = {
+      custom = {
         audio.enable = true;
         bluetooth.enable = true;
         cpuMicrocode.enable = true;
@@ -40,7 +40,7 @@ in
     })
 
     (lib.mkIf config.roles.workstation.macos {
-      mine = commonModules;
+      custom = commonModules;
     })
   ];
 }

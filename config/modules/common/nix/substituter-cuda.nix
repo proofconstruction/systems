@@ -2,7 +2,7 @@
 , lib
 , ...
 }: {
-  options.mine.nix.caches = with lib; {
+  options.custom.nix.caches = with lib; {
     cuda.enable = mkOption {
       type = types.bool;
       default = false;
@@ -13,7 +13,7 @@
   };
 
 
-  config = lib.mkIf config.mine.nix.caches.cuda.enable {
+  config = lib.mkIf config.custom.nix.caches.cuda.enable {
     nix.settings = {
       substituters = [ "https://cuda-maintainers.cachix.org" ];
       trusted-public-keys = [

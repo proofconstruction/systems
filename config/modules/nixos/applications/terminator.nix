@@ -5,10 +5,10 @@
 }:
 
 {
-  options.mine.terminator.enable = lib.mkEnableOption "terminator";
+  options.custom.terminator.enable = lib.mkEnableOption "terminator";
 
-  config = lib.mkIf config.mine.terminator.enable {
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.terminator.enable {
+    home-manager.users.${config.custom.user.name}.programs = {
       terminator = {
         enable = true;
         config = {

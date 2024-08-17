@@ -4,7 +4,7 @@
 }:
 
 {
-  config.mine = {
+  config.custom = {
     bottom.enable = true;
     eza.enable = true;
     fzf.enable = true;

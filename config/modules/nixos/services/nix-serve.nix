@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.nix-serve.enable = lib.mkEnableOption "nix-serve";
+  options.custom.nix-serve.enable = lib.mkEnableOption "nix-serve";
 
-  config = lib.mkIf config.mine.nix-serve.enable {
+  config = lib.mkIf config.custom.nix-serve.enable {
     services = {
       nix-serve = {
         enable = true;

@@ -7,9 +7,9 @@ let
   cfgp = config.private.homelab.acme;
 in
 {
-  options.mine.acme.enable = lib.mkEnableOption "acme";
+  options.custom.acme.enable = lib.mkEnableOption "acme";
 
-  config = lib.mkIf config.mine.acme.enable {
+  config = lib.mkIf config.custom.acme.enable {
     security.acme = {
       acceptTerms = true;
       preliminarySelfsigned = true;

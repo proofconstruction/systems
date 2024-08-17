@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.nvidia.enable = lib.mkEnableOption "nvidia drivers";
+  options.custom.nvidia.enable = lib.mkEnableOption "nvidia drivers";
 
-  config = lib.mkIf config.mine.nvidia.enable {
+  config = lib.mkIf config.custom.nvidia.enable {
     hardware = {
       graphics = {
         enable = true;
@@ -23,7 +23,7 @@
       videoDrivers = [ "nvidia" ];
     };
 
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       xorg.xhost
       gwe
     ];

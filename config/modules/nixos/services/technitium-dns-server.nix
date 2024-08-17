@@ -8,9 +8,9 @@ let
   port = 5380;
 in
 {
-  options.mine.technitium-dns-server.enable = lib.mkEnableOption "technitium-dns-server";
+  options.custom.technitium-dns-server.enable = lib.mkEnableOption "technitium-dns-server";
 
-  config = lib.mkIf config.mine.technitium-dns-server.enable {
+  config = lib.mkIf config.custom.technitium-dns-server.enable {
     services.technitium-dns-server.enable = true;
 
     services.caddy = {

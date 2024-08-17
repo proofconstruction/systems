@@ -3,7 +3,7 @@
 }:
 
 {
-  home-manager.users.${config.mine.user.name}.programs = {
+  home-manager.users.${config.custom.user.name}.programs = {
     nix-index = {
       enable = true;
       enableBashIntegration = true;

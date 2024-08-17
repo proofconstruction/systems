@@ -4,9 +4,9 @@
 }:
 
 {
-  options.mine.rtorrent.enable = lib.mkEnableOption "rtorrent";
+  options.custom.rtorrent.enable = lib.mkEnableOption "rtorrent";
 
-  config = lib.mkIf config.mine.rtorrent.enable {
-    home-manager.users.${config.mine.user.name}.programs.rtorrent.enable = true;
+  config = lib.mkIf config.custom.rtorrent.enable {
+    home-manager.users.${config.custom.user.name}.programs.rtorrent.enable = true;
   };
 }

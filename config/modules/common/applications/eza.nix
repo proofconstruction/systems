@@ -5,10 +5,10 @@
 }:
 
 {
-  options.mine.eza.enable = lib.mkEnableOption "eza";
+  options.custom.eza.enable = lib.mkEnableOption "eza";
 
-  config = lib.mkIf config.mine.eza.enable {
-    home-manager.users.${config.mine.user.name}.programs.eza = {
+  config = lib.mkIf config.custom.eza.enable {
+    home-manager.users.${config.custom.user.name}.programs.eza = {
       enable = true;
       enableBashIntegration = true;
       extraOptions = [

@@ -4,10 +4,10 @@
 }:
 
 {
-  options.mine.bottom.enable = lib.mkEnableOption "btm";
+  options.custom.bottom.enable = lib.mkEnableOption "btm";
 
-  config = lib.mkIf config.mine.bottom.enable {
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.bottom.enable {
+    home-manager.users.${config.custom.user.name}.programs = {
       bottom = {
         enable = true;
         settings = {

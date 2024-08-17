@@ -6,7 +6,7 @@
 
 {
   config = {
-    mine = {
+    custom = {
       nix.caches = {
         haskell.enable = true;
         nix-community.enable = true;

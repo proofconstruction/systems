@@ -8,7 +8,7 @@ let
   notBase = config.networking.hostName != "base";
 in
 {
-  options.mine.nix.caches = with lib; {
+  options.custom.nix.caches = with lib; {
     home.enable = mkOption {
       type = types.bool;
       default = false;
@@ -19,7 +19,7 @@ in
   };
 
 
-  config = lib.mkIf (config.mine.nix.caches.home.enable && notBase) {
+  config = lib.mkIf (config.custom.nix.caches.home.enable && notBase) {
     nix.settings = {
       substituters = [ "http://cache.${cfg}" ];
       trusted-public-keys = [

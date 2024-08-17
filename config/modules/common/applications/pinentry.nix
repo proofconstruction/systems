@@ -15,12 +15,12 @@ let
   };
 in
 {
-  options.mine.pinentry.enable = lib.mkEnableOption "pinentry";
+  options.custom.pinentry.enable = lib.mkEnableOption "pinentry";
 
-  config = lib.mkIf config.mine.pinentry.enable {
-    home-manager.users.${config.mine.user.name} = lib.mkIf (config.mine.exwm.enable or config.mine.rofi.enable) {
+  config = lib.mkIf config.custom.pinentry.enable {
+    home-manager.users.${config.custom.user.name} = lib.mkIf (config.custom.exwm.enable or config.custom.rofi.enable) {
       services.gpg-agent = lib.mkMerge [
-        (lib.mkIf config.mine.exwm.enable {
+        (lib.mkIf config.custom.exwm.enable {
           extraConfig = ''
             allow-emacs-pinentry
             allow-loopback-pinentry
@@ -29,7 +29,7 @@ in
           pinentryFlavor = "emacs";
         })
 
-        (lib.mkIf config.mine.rofi.enable {
+        (lib.mkIf config.custom.rofi.enable {
           extraConfig = ''
             pinentry-program ${pinentryRofi}/bin/pinentry-rofi-with-env
           '';
@@ -39,13 +39,13 @@ in
       ];
 
       home.packages = lib.mkMerge [
-        (lib.mkIf config.mine.rofi.enable [ pkgs.pinentry-rofi ])
-        (lib.mkIf config.mine.exwm.enable [ pkgs.pinentry-emacs ])
-        (lib.mkIf (!config.mine.rofi.enable && !config.mine.exwm.enable) [ pkgs.pinentry-gtk2 ])
+        (lib.mkIf config.custom.rofi.enable [ pkgs.pinentry-rofi ])
+        (lib.mkIf config.custom.exwm.enable [ pkgs.pinentry-emacs ])
+        (lib.mkIf (!config.custom.rofi.enable && !config.custom.exwm.enable) [ pkgs.pinentry-gtk2 ])
       ];
     };
 
-    # home-manager.users.${config.mine.user.name}.home.file.".gnupg/gpg-agent.conf".text = lib.mkIf pkgs.stdenv.isDarwin ''
+    # home-manager.users.${config.custom.user.name}.home.file.".gnupg/gpg-agent.conf".text = lib.mkIf pkgs.stdenv.isDarwin ''
     #   pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
     # '';
   };

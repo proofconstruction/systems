@@ -6,7 +6,7 @@
 }:
 
 # {
-#   imports = config.mine.lib.validFiles ./.;
+#   imports = config.custom.lib.validFiles ./.;
 # }
 with lib;
 let

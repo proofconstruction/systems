@@ -5,9 +5,9 @@
 }:
 
 {
-  options.mine.xmonad.enable = lib.mkEnableOption "xmonad";
+  options.custom.xmonad.enable = lib.mkEnableOption "xmonad";
 
-  config = lib.mkIf config.mine.xmonad.enable {
+  config = lib.mkIf config.custom.xmonad.enable {
     services = {
       xserver = {
         enable = true;
@@ -20,11 +20,11 @@
       };
       displayManager.autoLogin = {
         enable = true;
-        user = config.mine.user.name;
+        user = config.custom.user.name;
       };
     };
 
-    home-manager.users.${config.mine.user.name}.home = {
+    home-manager.users.${config.custom.user.name}.home = {
       file.".xmonad/xmonad.hs".source = ./xmonad.hs;
       file.".xmobarrc".source = ./xmobarrc;
       packages = with pkgs; [

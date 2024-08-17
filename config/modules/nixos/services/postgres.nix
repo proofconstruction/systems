@@ -4,9 +4,9 @@
 , ...
 }:
 {
-  options.mine.postgres.enable = lib.mkEnableOption "postgres";
+  options.custom.postgres.enable = lib.mkEnableOption "postgres";
 
-  config = lib.mkIf config.mine.postgres.enable {
+  config = lib.mkIf config.custom.postgres.enable {
     services.postgresql = {
       enable = true;
       package = pkgs.postgresql_15;

@@ -4,10 +4,10 @@
 }:
 
 {
-  options.mine.htop.enable = lib.mkEnableOption "htop";
+  options.custom.htop.enable = lib.mkEnableOption "htop";
 
-  config = lib.mkIf config.mine.htop.enable {
-    home-manager.users.${config.mine.user.name}.programs = {
+  config = lib.mkIf config.custom.htop.enable {
+    home-manager.users.${config.custom.user.name}.programs = {
       htop = {
         enable = true;
         settings.color_scheme = 5;

@@ -4,10 +4,10 @@
 , ...
 }:
 {
-  options.mine.development.haskell.enable = lib.mkEnableOption "Haskell devtools";
+  options.custom.development.haskell.enable = lib.mkEnableOption "Haskell devtools";
 
-  config = lib.mkIf config.mine.development.haskell.enable {
-    home-manager.users.${config.mine.user.name}.home.packages = with pkgs; [
+  config = lib.mkIf config.custom.development.haskell.enable {
+    home-manager.users.${config.custom.user.name}.home.packages = with pkgs; [
       ghc
     ];
   };
